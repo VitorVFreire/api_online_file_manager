@@ -34,7 +34,18 @@ class file_class:
         name = f'{self.file}'
         arquivo = list(diretorio.glob(f'*{name}*'))
         if arquivo:
-            return str(arquivo)
+            return str(arquivo[0])
         else:
             return 'Arquivo não encontrado'
     
+    def type_file(self):
+        if self.file.endswith('.jpg') or self.file.endswith('.jpeg'):
+            return 'image/jpeg'
+        elif self.file.endswith('.png'):
+            return 'image/png'
+        elif self.file.endswith('.mp4'):
+            return 'video/mp4'
+        elif self.file.endswith('.mp3'):
+            return 'audio/mp3'
+        else:
+            return 'application/octet-stream'
