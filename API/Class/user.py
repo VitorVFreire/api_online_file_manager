@@ -16,28 +16,28 @@ class user:
     @property
     def id(self):
         if self._id is None:
-            self._id=self.get_user()[0]
+            self._id=self.get_user()['id_user']
         return self._id
     
     @property
     def name(self):
         if self._name is None:
-            self._name=self.get_user()[1]
+            self._name=self.get_user()['name']
         return self._name
     
     @property
     def email(self):
         if self._email is None:
-            self._email=self.get_user()[2]
+            self._email=self.get_user()['email']
         return self._email
     
     @property
     def years(self):
         if self._datebirth is None:
-            self._datebirth = self.get_user()[4]
+            self._datebirth = self.get_user()['datebirth']
         if self._datebirth:
             today = datetime.date.today()
-            datebirth_str = self._datebirth.strftime('%Y-%m-%d')  # Convert date to string
+            datebirth_str = self._datebirth.strftime('%Y-%m-%d')
             dif = today - datetime.datetime.strptime(datebirth_str, '%Y-%m-%d').date()
             return dif.days // 365
         return None
@@ -90,6 +90,7 @@ class user:
     def get_user(self):
         try:
             mycursor = mydb.cursor()
+            result = {}
             if self._id:
                 mycursor.execute("SELECT * FROM user WHERE id_user=%s", (self._id,))
                 myresult = mycursor.fetchone()
@@ -98,7 +99,11 @@ class user:
                 myresult = mycursor.fetchone()
             
             if myresult:
-                return myresult
+                column_names = [column[0] for column in mycursor.description]
+                indexed_result = [(column_names[i], field) for i, field in enumerate(myresult)]
+                for column_name, field in indexed_result:
+                    result[column_name] = field
+                return result
             return None
         except:
             return None
