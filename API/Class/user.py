@@ -1,4 +1,4 @@
-from database import mydb
+from Database.database import mydb
 from helpers import criptografar
 import datetime
 
@@ -100,8 +100,7 @@ class user:
             if myresult:
                 return myresult
             return None
-        except EOFError as e:
-            print(e)
+        except:
             return None
     
     def valid_user(self):

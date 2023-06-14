@@ -1,4 +1,4 @@
-from user import user
+from Class.user import user
 user1=user(email='teste1@email.com',name='teste1',password='123',datebirth='2000/02/23')
 print(f'create:{user1.create()}')
 print(f'id:{user1.id}')
