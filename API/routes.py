@@ -12,8 +12,6 @@ def upload_file():
     if 'file' not in request.files:
         return "file wasn't uploaded", 400
     file_upload = request.files['file']
-    print(file_upload)
-    print(file_upload.filename)
     file = File(file=file_upload, name_file=file_upload.filename,id_user=1)
 
     if file.save_file()==False:
@@ -25,13 +23,13 @@ import os
 
 @app.route('/remove', methods=['POST','DELETE'])
 def remove():
-    if 'file' not in request.files:
+    if 'file' not in request.json:
         return "file wasn't uploaded", 400
     
-    file_path = request.files['file']
-    file_name = os.path.basename(file_path)  # Extrai o nome do arquivo do caminho
+    file_path = request.json['file']
+    print(file_path)
     
-    file = File(name_file=file_name, id_user=1)
+    file = File(name_file=file_path, id_user=1)
     
     if file.remove_file() == False:
         return "file wasn't removed", 400

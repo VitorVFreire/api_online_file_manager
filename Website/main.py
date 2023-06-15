@@ -21,8 +21,8 @@ file_path='file/A Bola Rosada.mp4'
         
 def remove_file(api_url, file_path):
     try:
-        files = {'file': file_path}
-        response = requests.post(api_url, files=files)
+        json = {'file': file_path}
+        response = requests.post(api_url, json=json)
 
         if response.status_code == 200:
             print('Remoção do arquivo realizada com sucesso!')
@@ -34,7 +34,7 @@ def remove_file(api_url, file_path):
         print('Erro ao abrir o arquivo de vídeo:', str(e))
         
 api_url_remove=base_api+'remove'
-file_path = 'file/A Bola Rosada.mp4'
+file_path = 'ABolaRosada.mp4'
 remove_file(api_url_remove, file_path)
 
 def files(api_url, file_name):
