@@ -42,12 +42,10 @@ def get_files():
         return "file wasn't uploaded", 400
     
     file_path = request.json['file']
-    print(file_path)
     file = File(name_file=file_path, id_user=1)
-    print('name:' + file.name_file)
     file_url = url_for('open_file', name_file=file.name_file, _external=True)
 
-    return jsonify({'file_url': file_url})
+    return jsonify({'file_url': file_url,'type':file.type_file()})
 
 @app.route('/openfile/<name_file>', methods=['GET'])
 def open_file(name_file):    

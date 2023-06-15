@@ -1,6 +1,8 @@
 {% extends "template.html" %}
 {% block conteudo %}
     oi
-    link='{{link_img}}'
-    <img scr="http://192.168.1.14:8585/openfile/1686493785Drum_I" alt='oi gsknjdsnfl'>
+    <!--<img src="{{link_img}}" alt='oi gsknjdsnfl'>-->
+    <video width="320" height="240" controls>
+        <source src="{{link_img}}" type="video/mp4">
+    </video>
 {% endblock %}
