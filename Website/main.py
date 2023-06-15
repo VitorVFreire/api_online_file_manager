@@ -16,7 +16,7 @@ def upload_file(api_url, file_path):
         print('Erro ao abrir o arquivo:', str(e))
         
 api_url = base_api+'upload_file'
-file_path='file/MomoDRAG.jpg'
+file_path='file/Drum_Island_Infobox.png'
 #upload_file(api_url, file_path)
         
 def remove_file(api_url, file_path):
@@ -34,8 +34,8 @@ def remove_file(api_url, file_path):
         print('Erro ao abrir o arquivo de vídeo:', str(e))
         
 api_url_remove=base_api+'remove'
-file_path = 'A Bola Rosada.mp4'
-#remove_file(api_url_remove, file_path)
+file_path = 'Drum_Island_Infobox.png'
+remove_file(api_url_remove, file_path)
 
 def get_file_url(api_url, file_path):
     try:
@@ -55,9 +55,9 @@ def get_file_url(api_url, file_path):
     return None
 
 api_url_file = base_api+'files'
-file_name = 'MomoDRAG.jpg'
+file_name = 'Drum_Island_Infobox.png'
 
-file_url = get_file_url(api_url_file, file_name)
+#file_url = get_file_url(api_url_file, file_name)
 if file_url:
     print("File URL:", file_url)
 
