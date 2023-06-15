@@ -1,0 +1,13 @@
+from src import User
+user1=User(email='teste1@email.com',name='teste1',password='123',datebirth='2000/02/23')
+#print(f'deleted:{user1.delete()}')
+#print(f'create:{user1.create()}')
+print(f'id:{user1.id}')
+print(f"status update: {user1.update('name','teste01')}")
+print(f'user: {user1.get_user()}')
+print(f'user: {user1.valid_user()}')
+print(f'email: {user1.email}')
+print(f'years: {user1.years}')
+print(f'name: {user1.name}')
+print(f'user: {user1.get_user()}')
+#print(f'deleted:{user1.delete()}')
