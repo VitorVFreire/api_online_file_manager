@@ -16,7 +16,7 @@ def upload_file(api_url, file_path):
         print('Erro ao abrir o arquivo:', str(e))
         
 api_url = base_api+'upload_file'
-file_path='file/A Bola Rosada.mp4'
+file_path='file/MomoDRAG.jpg'
 #upload_file(api_url, file_path)
         
 def remove_file(api_url, file_path):
@@ -34,18 +34,32 @@ def remove_file(api_url, file_path):
         print('Erro ao abrir o arquivo de vídeo:', str(e))
         
 api_url_remove=base_api+'remove'
-file_path = 'ABolaRosada.mp4'
-remove_file(api_url_remove, file_path)
+file_path = 'A Bola Rosada.mp4'
+#remove_file(api_url_remove, file_path)
 
-def files(api_url, file_name):
+def get_file_url(api_url, file_path):
     try:
-        response = requests.post(api_url, json={'file':file_name})
-        print(response.json())
-    except IOError as e:
-        print('Erro ao abrir o arquivo:', str(e))
+        response = requests.post(api_url, json={'file': file_path})
+        if response.status_code == 200:
+            data = response.json()
+            file_url = data.get('file_url')
+            if file_url:
+                return file_url
+            else:
+                print("URL not found in the response.")
+        else:
+            print("Error:", response.status_code)
+    except requests.exceptions.RequestException as e:
+        print("Request error:", str(e))
+    
+    return None
+
 api_url_file = base_api+'files'
-file_name = 'file/Drum_Island_Infobox'
-#files(api_url_file, file_name)
+file_name = 'MomoDRAG.jpg'
+
+file_url = get_file_url(api_url_file, file_name)
+if file_url:
+    print("File URL:", file_url)
 
 def link_file(api_url, file_name):
     try:

@@ -27,7 +27,6 @@ def remove():
         return "file wasn't uploaded", 400
     
     file_path = request.json['file']
-    print(file_path)
     
     file = File(name_file=file_path, id_user=1)
     
@@ -40,17 +39,19 @@ def remove():
 @app.route('/files', methods=['POST'])
 def get_files():
     if 'file' not in request.json:
-        return 'no file uploaded', 400
+        return "file wasn't uploaded", 400
     
-    file_upload=request.files['file']
-    file = File(file_upload,file_upload.filename)
-    
-    return jsonify(file.get_file_path())
+    file_path = request.json['file']
+    print(file_path)
+    file = File(name_file=file_path, id_user=1)
+    print('name:' + file.name_file)
+    file_url = url_for('open_file', name_file=file.name_file, _external=True)
+
+    return jsonify({'file_url': file_url})
 
 @app.route('/openfile/<name_file>', methods=['GET'])
 def open_file(name_file):    
-    #file=File(request.json['file'])
-    file = File(name_file=name_file)
+    file = File(name_file=name_file, id_user=1)
     file_path = file.get_file_path()
     if not os.path.exists(file_path):
         return 'file not found', 404
