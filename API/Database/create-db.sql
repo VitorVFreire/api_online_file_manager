@@ -3,7 +3,9 @@ CREATE DATABASE api_file
     DEFAULT CHARACTER SET = 'utf8mb4';
 
 USE api_file;
-DROP TABLE client;
+SELECT * FROM user;
+SELECT * FROM files;
+DROP TABLE user;
 DROP TABLE files;
 CREATE Table user(
     id_user int PRIMARY KEY AUTO_INCREMENT,
@@ -16,5 +18,6 @@ CREATE TABLE files (
     id_file INT PRIMARY KEY AUTO_INCREMENT,
     name_file VARCHAR(100) NOT NULL,
     id_user INT NOT NULL,
-    FOREIGN KEY (id_user) REFERENCES api_file.user (id_user)
+    FOREIGN KEY (id_user) REFERENCES api_file.user (id_user),
+    status int NOT NULL
 );

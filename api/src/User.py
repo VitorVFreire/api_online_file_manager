@@ -1,8 +1,8 @@
-from Database.database import mydb
-from helpers import criptografar
+from database import mydb
+from tools import criptografar
 import datetime
 
-class user:
+class User:
     def __init__(self,id=None,name=None,email=None,password=None,datebirth=None):
         self._id=id
         self._name=name
