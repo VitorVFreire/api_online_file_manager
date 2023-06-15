@@ -15,7 +15,7 @@ status:
 class File(User):
     def __init__(self,name_file,id_user,file=None):
         self.file = file
-        self.name_file=name_file
+        self.name_file=name_file.replace(" ","")
         super().__init__(id=id_user)
         self.directory=pathlib.Path('Files')
     
@@ -23,7 +23,6 @@ class File(User):
         try:
             time_now = int(time.time())
             name = f'{time_now}{self.name_file}'  
-            name=name.replace(" ","")
             route= f'{self.directory}/{name}'   
             self.file.save(route)
             self.insert_file_base(name)
