@@ -46,11 +46,8 @@ A API retornará um JSON com a URL do arquivo online. Por exemplo:
 }
 ```
 Acesse a URL fornecida para visualizar ou reproduzir o arquivo online.
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request com melhorias, correções de bugs ou novos recursos.
 
 ## Licença
 Este projeto está licenciado sob a licença MIT. <br>Sinta-se à vontade para usá-lo de acordo com os termos da licença.
 
 Esse projeto foi desenvolvido por Vitor Freire.
-
