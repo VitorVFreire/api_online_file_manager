@@ -1,5 +1,9 @@
 # API Online File Manager
 
+![GitHub](https://img.shields.io/github/license/VIVF0/api_online_file_manager)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/VIVF0/api_online_file_manager)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/VIVF0/api_online_file_manager)
+
 A API Online File Manager é um projeto em Python com Flask que permite o envio e o acesso a arquivos de vídeo, imagem e áudio de forma online. Com essa API, é possível fazer upload de arquivos e obter URLs para visualizá-los e reproduzi-los diretamente no navegador.
  
 ## Recursos
